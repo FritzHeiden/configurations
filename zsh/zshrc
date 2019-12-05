@@ -1,0 +1,22 @@
+# oh my zsh configuration
+# Path to your oh-my-zsh installation.
+export ZSH="/home/fritz/.config/zsh/oh-my-zsh"
+ZSH_THEME="robbyrussell"
+DISABLE_UPDATE_PROMPT="true"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+export PATH="/home/fritz/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
+
+alias cfz="vim $ZDOTDIR/zshrc"
+alias cfv="vim $HOME/.config/vim/vimrc"
+alias cdv="cd $HOME/.config/vim"
