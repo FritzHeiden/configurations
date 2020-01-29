@@ -5,24 +5,49 @@ set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
 set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 
 call plug#begin('$XDG_DATA_HOME/vim/plugged')
+" Look and Feel
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'enricobacis/vim-airline-clock'
-  Plug 'scrooloose/nerdtree'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
-  Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-  Plug 'ycm-core/YouCompleteMe'
-  Plug 'xuyuanp/nerdtree-git-plugin'
+  Plug 'tomasiser/vim-code-dark'
   Plug 'tpope/vim-fugitive'
   Plug 'mhinz/vim-signify'
+" Nerdtree
+  Plug 'scrooloose/nerdtree'
+  Plug 'xuyuanp/nerdtree-git-plugin'
+  "Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+  "  Plug 'ycm-core/YouCompleteMe'
+" Code Completion
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Syntax Highlighting
+  Plug 'yuezk/vim-js'
+  Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'vim-pandoc/vim-pandoc-syntax'
+" Misc.
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'preservim/nerdcommenter'
 call plug#end()
+
+colorscheme codedark
 
 source ~/.config/vim/nerdtree.vim
 source ~/.config/vim/fzf.vim
-source ~/.config/vim/ycm.vim
+"source ~/.config/vim/ycm.vim
+source ~/.config/vim/coc.vim
 source ~/.config/vim/signify.vim
+
+filetype plugin on
 
 set number relativenumber
 
 map <SPACE> <leader>
+
+autocmd FileType javascript call SetJavascriptOptions()
+function SetJavascriptOptions()
+	setlocal suffixesadd=".js,/index.js"
+	setlocal tabstop=2
+	setlocal expandtab
+	setlocal shiftwidth=2
+	setlocal smarttab
+endfunction

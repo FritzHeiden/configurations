@@ -22,3 +22,6 @@ export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
 alias cfz="vim $ZDOTDIR/zshrc"
 alias cfv="vim $HOME/.config/vim/vimrc"
 alias cdv="cd $HOME/.config/vim"
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
