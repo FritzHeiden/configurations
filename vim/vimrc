@@ -31,11 +31,10 @@ call plug#end()
 
 colorscheme codedark
 
-source ~/.config/vim/nerdtree.vim
-source ~/.config/vim/fzf.vim
 "source ~/.config/vim/ycm.vim
 source ~/.config/vim/coc.vim
 source ~/.config/vim/signify.vim
+source ~/.config/vim/keybindings.vim
 
 filetype plugin on
 
@@ -46,6 +45,14 @@ map <SPACE> <leader>
 autocmd FileType javascript call SetJavascriptOptions()
 function SetJavascriptOptions()
 	setlocal suffixesadd=".js,/index.js"
+	setlocal tabstop=2
+	setlocal expandtab
+	setlocal shiftwidth=2
+	setlocal smarttab
+endfunction
+
+autocmd FileType markdown call SetMarkdownOptions()
+function SetMarkdownOptions()
 	setlocal tabstop=2
 	setlocal expandtab
 	setlocal shiftwidth=2
