@@ -28,6 +28,8 @@ set signcolumn=yes
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
+highlight CocHighlightText ctermbg=237  guibg=#3a3a3a
+
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).

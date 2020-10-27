@@ -10,11 +10,11 @@ call plug#begin('$XDG_DATA_HOME/vim/plugged')
   Plug 'vim-airline/vim-airline-themes'
   Plug 'enricobacis/vim-airline-clock'
   Plug 'tomasiser/vim-code-dark'
-  Plug 'tpope/vim-fugitive'
+  "Plug 'tpope/vim-fugitive'
   Plug 'mhinz/vim-signify'
 " Nerdtree
   Plug 'scrooloose/nerdtree'
-  Plug 'xuyuanp/nerdtree-git-plugin'
+  "Plug 'xuyuanp/nerdtree-git-plugin'
   "Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
   "  Plug 'ycm-core/YouCompleteMe'
 " Code Completion
@@ -29,6 +29,8 @@ call plug#begin('$XDG_DATA_HOME/vim/plugged')
   Plug 'preservim/nerdcommenter'
 call plug#end()
 
+set directory=$HOME/.config/vim/
+
 colorscheme codedark
 
 "source ~/.config/vim/ycm.vim
@@ -38,23 +40,18 @@ source ~/.config/vim/keybindings.vim
 
 filetype plugin on
 
-set number relativenumber
-
 map <SPACE> <leader>
 
 autocmd FileType javascript call SetJavascriptOptions()
 function SetJavascriptOptions()
 	setlocal suffixesadd=".js,/index.js"
-	setlocal tabstop=2
-	setlocal expandtab
-	setlocal shiftwidth=2
-	setlocal smarttab
 endfunction
 
-autocmd FileType markdown call SetMarkdownOptions()
-function SetMarkdownOptions()
-	setlocal tabstop=2
-	setlocal expandtab
-	setlocal shiftwidth=2
-	setlocal smarttab
-endfunction
+set number relativenumber
+set expandtab
+set smarttab
+set tabstop=2
+set shiftwidth=2
+
+set exrc " Allow per project vim config
+set secure " Disable unsafe commands for other vim configs
