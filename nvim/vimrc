@@ -1,0 +1,70 @@
+set undodir=$XDG_DATA_HOME/vim/undo
+set directory=$XDG_DATA_HOME/vim/swap
+set backupdir=$XDG_DATA_HOME/vim/backup
+set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
+
+call plug#begin('$XDG_DATA_HOME/vim/plugged')
+" = Look and Feel =
+  Plug 'marko-cerovac/material.nvim', {'branch': 'main'}
+  Plug 'hoob3rt/lualine.nvim'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'lewis6991/gitsigns.nvim', {'branch': 'main'}
+
+
+" = Nerdtree =
+  "Plug 'scrooloose/nerdtree'
+  "Plug 'xuyuanp/nerdtree-git-plugin'
+  "Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+
+" = Code Completion =
+  "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'kabouzeid/nvim-lspinstall', {'branch': 'main'}
+  Plug 'hrsh7th/nvim-compe'
+  Plug 'glepnir/lspsaga.nvim', {'branch': 'main'}
+
+" = Syntax Highlighting =
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" = Misc. =
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } 
+  Plug 'junegunn/fzf.vim'
+  Plug 'preservim/nerdcommenter'
+  Plug 'sbdchd/neoformat'
+call plug#end()
+
+set directory=$HOME/.config/vim/
+
+let g:material_style = 'darker'
+colorscheme material
+
+source ~/.config/vim/neoformat.vim
+luafile ~/.config/vim/lualine.lua
+luafile ~/.config/vim/gitsigns.lua
+luafile ~/.config/vim/lsps.lua
+luafile ~/.config/vim/nvim_lsp.lua
+luafile ~/.config/vim/nvim_compe.lua
+luafile ~/.config/vim/lspsaga.lua
+luafile ~/.config/vim/material.lua
+source ~/.config/vim/keybindings.vim
+
+filetype plugin on
+
+map <SPACE> <leader>
+
+autocmd FileType javascript call SetJavascriptOptions()
+function SetJavascriptOptions()
+	setlocal suffixesadd=".js,/index.js"
+endfunction
+
+set number relativenumber
+set expandtab
+set smarttab
+set tabstop=2
+set shiftwidth=2
+set encoding=UTF-8
+
+set exrc " Allow per project vim config
+"set secure " Disable unsafe commands for other vim configs
